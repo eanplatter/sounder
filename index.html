@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="sounds">
+<head>
+  <title>Sounds</title>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="http://bootswatch.com/cosmo/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="MainController">
+<form>
+<input type='text' placeholder="search artist" ng-model="searchArtist" class="form-control text-center">
+<button type='submit' class="btn btn-block btn-info" ng-click="getArtist()">Search</button>
+
+</form>
+
+<div ng-bind-html="iFrame">
+
+</div>
+<div class="row">
+  <div ng-repeat="song in artist">
+    <div class="col-md-1">
+      <img src="http://i.ytimg.com/vi/L5z2-Mx9TNE/hqdefault.jpg" ng-if="!song.artwork_url">
+      <img src="{{song.artwork_url}}" ng-click="play(song.permalink_url)" ng-if="song.artwork_url">
+    </div>
+  </div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="service.js"></script>
+
+</body>
+</html>
