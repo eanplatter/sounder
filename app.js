@@ -1,1 +1,1 @@
-var app = angular.module('sounds', []);
+var app = angular.module('sounds', ['ipCookie']);

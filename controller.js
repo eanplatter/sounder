@@ -1,14 +1,13 @@
 var app = angular.module('sounds');
 
-app.controller('MainController', function($scope, soundService, $sce) {
+app.controller('MainController', function($scope, soundService, $sce, ipCookie) {
   $scope.getArtist = function() {
     if($scope.searchArtist.indexOf(' ') !== -1) {
       $scope.searchArtist = $scope.searchArtist.replace(' ', '-')
     }
-    console.log($scope.searchArtist);
     soundService.getArtist($scope.searchArtist).then(function(data) {
       $scope.artist = data.data;
-      console.log($scope.artist);
+      console.log('get artist function ', $scope.artist);
     })
     $scope.searchArtist = '';
   }
